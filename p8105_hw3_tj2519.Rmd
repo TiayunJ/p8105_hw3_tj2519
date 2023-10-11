@@ -56,28 +56,23 @@ problem1_df %>%
 
 ```{r}
 problem1_df %>% 
-  group_by(aisle_id, product_id) %>% 
+  group_by(aisle, product_id) %>% 
   filter(aisle == "baking ingredients" |
            aisle == "dog food care" |
            aisle == "packaged vegetables fruits"
            ) %>% 
   summarize(order_num = n()) %>% 
-  arrange(aisle_id, desc(order_num)) %>% 
+  arrange(aisle, desc(order_num)) %>% 
   slice(1:3) %>% 
-  pivot_wider(
-    
-  )
+  pivot_wider(names_from = aisle,
+              values_from = order_num)
 
-  
-
-  
-  
-  
-  
-view(problem1_df)  
 ```
 
+## part4: make a new table
+```{r}
 
+```
 
 
 
