@@ -56,7 +56,7 @@ problem1_df %>%
 
 ```{r}
 problem1_df %>% 
-  group_by(aisle, product_id) %>% 
+  group_by(aisle, product_name) %>% 
   filter(aisle == "baking ingredients" |
            aisle == "dog food care" |
            aisle == "packaged vegetables fruits"
