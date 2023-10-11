@@ -69,10 +69,19 @@ problem1_df %>%
 
 ```
 
-## part4: make a new table
+## part5: make a new table
 ```{r}
+problem1_df %>% 
+  filter(product_name == "Pink Lady Apples" | 
+           product_name == "Coffee Ice Cream") %>% 
+  group_by(product_name, order_dow) %>% 
+  summarize(mean_order_time = mean(order_hour_of_day, na.rm = TRUE)) %>% 
+  pivot_wider(names_from = order_dow,
+              values_from = mean_order_time)
 
 ```
+
+
 
 
 
