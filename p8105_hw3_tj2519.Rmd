@@ -8,6 +8,7 @@ date: "2023-10-09"
 ## part1: load the library and dataset
 ```{r}
 library(tidyverse)
+library(ggridges)
 library(p8105.datasets)
 data("instacart")
 
@@ -38,6 +39,20 @@ problem1_df %>%
 
 view(problem1_df)
 ```
+
+## part3: make a plot showing the number of items ordered in each aisle
+```{r}
+problem1_df %>% 
+  group_by(aisle_id) %>% 
+  summarize(number_item = n()) %>% 
+  filter(number_item > 10000) %>% 
+  ggplot(aes(x = aisle_id, y = number_item, fill = aisle_id)) +
+  geom_bar(stat = "identity")
+```
+
+## part4: make a table
+
+
 
 
 
