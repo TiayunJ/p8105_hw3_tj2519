@@ -26,14 +26,19 @@ options(
 
 scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
-
 ```
 
-
+## part2: calculate the number of aisles and number of items in each aisle
 ```{r}
-problem1_df = instacart
+problem1_df = instacart 
+problem1_df %>% 
+  group_by(aisle_id) %>% 
+  summarize(n_obs = n()) %>% 
+  arrange(desc(n_obs))
 
+view(problem1_df)
 ```
+
 
 
 
