@@ -46,11 +46,14 @@ problem1_df %>%
   group_by(aisle_id) %>% 
   summarize(number_item = n()) %>% 
   filter(number_item > 10000) %>% 
-  ggplot(aes(x = aisle_id, y = number_item, fill = aisle_id)) +
-  geom_bar(stat = "identity")
+  ggplot(aes(x = reorder(aisle_id, -number_item), y = number_item)) +
+  geom_bar(stat = "identity", width = 0.5) + 
+  theme(axis.text.x = element_text(size = 6)) +
+  xlab("aisle_id") 
 ```
 
 ## part4: make a table
+
 
 
 
