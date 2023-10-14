@@ -225,7 +225,7 @@ The table indicates that the number of female and male who has a degree of 'Less
 According to the box plot, the median age of female and male with a less than a high school degree is similar, and the age distributions for the two genders are similar; the median age of female with a 'High school equivalent' degree is older than male, and the age distributions for the two genders are similar, with males slightly younger than females; the median age of female with a 'More than high school' degree is similar, and the age distributions for the two genders are similar.
 
 
-## part3: aggregate the "min" variables to create a single variable
+## part3: aggregate the "min" variables to create a single variable, and making a plot
 ```{r}
 demo_acc_join %>% 
   pivot_longer(starts_with("min"), 
@@ -243,6 +243,17 @@ demo_acc_join %>%
 The plot shows the total activity across age in each education level, and the trend line in each education level seems to have a trend - with younger age, the total activity is higher. In high school equivalent and more than high school group, female seem to have higher total activity than male. 
 
 
+## part4: make a plot showing the 24-hr activity for each education level and stratified by sex
+```{r}
+demo_acc_join %>% 
+  pivot_longer(starts_with("min"), 
+               names_to = "activity",
+               values_to = "activity_value") %>% 
+  ggplot(aes(x = activity, y = activity_value, color = sex)) + 
+  geom_smooth(se = FALSE) +
+  geom_point(alpha = .1) +
+  facet_grid(. ~ education)
+```
 
 
 
