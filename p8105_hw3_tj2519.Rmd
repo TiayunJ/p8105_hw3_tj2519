@@ -96,16 +96,13 @@ view(brfss_smart2010)
 ```{r}
 problem2_df = brfss_smart2010
 
-a = problem2_df %>% 
+problem2_df %>% 
   janitor::clean_names() %>% 
-  filter(topic == "Overall Health")
+  filter(topic == "Overall Health") %>% 
+  drop_na(response) %>% 
+  mutate(response = forcats::fct_relevel(
+    response, c("Poor", "Fair", "Good", "Very good", "Excellent")))
 
-
-
-b = a %>% 
-  distinct(response)
-
-b
 ```
 
 
