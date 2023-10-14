@@ -151,9 +151,10 @@ To make this plot, I move the legend to the right of the plot so it could be mor
 problem2_clean %>% 
   filter(location_abbr == "NY", year == 2006 | year == 2010) %>% 
   ggplot(aes(x = data_value, fill = response)) +
-  geom_density(alpha = .5)
+  geom_density(alpha = .5) + 
+  facet_grid(. ~ year) +
   
-
+  
 
 ```
 
