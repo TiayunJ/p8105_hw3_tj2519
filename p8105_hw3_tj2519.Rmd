@@ -173,7 +173,7 @@ I firstly filter the datset to include only the data in NY and only the observat
 
 
 # Problem 3
-## part1: read the two datasets and tidy the two datasets, also apply left_join by "seqn" to merge the two datasets
+## part1: read the two datasets and tidy the two datasets, also apply left_join by "seqn" to merge the two datasets. Also recode certain variables
 ```{r}
 demo_data = 
   read_csv("data/nhanes_covar.csv", skip = 4) %>% 
@@ -203,9 +203,13 @@ view(demo_acc_join)
 ```
 
 
-## part2: encode data
+## part2: 
 ```{r}
-demo_acc_join 
+demo_acc_join %>% 
+  group_by(education, sex) %>% 
+  summarize(number_count = n()) %>% 
+  pivot_wider(names_from = sex, values_from = number_count)
+
 ```
 
 
