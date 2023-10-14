@@ -101,7 +101,7 @@ problem2_df %>%
   filter(topic == "Overall Health") %>% 
   drop_na(response) %>% 
   mutate(response = forcats::fct_relevel(
-    response, c("Poor", "Fair", "Good", "Very good", "Excellent")))
+    response, c("Excellent", "Very good", "Good", "Fair", "Poor")))
 
 ```
 
