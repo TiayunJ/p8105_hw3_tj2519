@@ -234,10 +234,15 @@ demo_acc_join %>%
   group_by(education, sex, age, seqn) %>% 
   summarize(total_activity = sum(activity_value)) %>% 
   ggplot(aes(x = age, y = total_activity, color = sex)) +
+  geom_smooth(se = FALSE) +
   geom_point() +
-  facet_grid(. ~ education)
+  facet_grid(. ~ education) +
+  labs(title = "Total activity across age in each education level")
   
 ```
+The plot shows the total activity across age in each education level, and the trend line in each education level seems to have a trend - with younger age, the total activity is higher. In high school equivalent and more than high school group, female seem to have higher total activity than male. 
+
+
 
 
 
