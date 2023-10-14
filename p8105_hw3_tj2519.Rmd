@@ -143,7 +143,7 @@ problem2_clean %>%
   theme_minimal()
 
 ```
-To make this plot, I 
+To make this plot, I move the legend to the right of the plot so it could be more clear.
 
 
 
