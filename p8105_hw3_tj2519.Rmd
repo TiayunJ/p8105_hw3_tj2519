@@ -146,6 +146,13 @@ problem2_clean %>%
 To make this plot, I move the legend to the right of the plot so it could be more clear.
 
 
+## part5: answer the third question
+```{r}
+a = problem2_clean %>% 
+  filter(location_abbr == "NY", year == 2006 | year == 2010)
+
+view(a)
+```
 
 
 
