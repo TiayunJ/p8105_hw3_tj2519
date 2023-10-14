@@ -148,10 +148,12 @@ To make this plot, I move the legend to the right of the plot so it could be mor
 
 ## part5: answer the third question
 ```{r}
-a = problem2_clean %>% 
-  filter(location_abbr == "NY", year == 2006 | year == 2010)
+problem2_clean %>% 
+  filter(location_abbr == "NY", year == 2006 | year == 2010) %>% 
+  ggplot(aes(x = response, y = data_value)) +
+  geom_bar(stat = "identity", width = 0.5) +
+  facet_grid(. ~ year)
 
-view(a)
 ```
 
 
