@@ -113,6 +113,13 @@ problem2_clean %>%
   group_by(location_abbr) %>% 
   summarize(n_location = n_distinct(location_desc_order)) %>% 
   filter(n_location >= 7)
+
+problem2_clean %>%
+  filter(year == 2002) %>% 
+  group_by(location_abbr) %>% 
+  summarize(n_location = n_distinct(geo_location)) %>% 
+  filter(n_location >= 7)
+
   
 problem2_clean %>%
   filter(year == 2010) %>% 
@@ -120,7 +127,7 @@ problem2_clean %>%
   summarize(n_location = n_distinct(location_desc_order)) %>% 
   filter(n_location >= 7)
 ```
-According to the results, in 2002, there are 
+According to the results, in 2002, there are 6 states were observed at 7 or more locations (counties), and the 6 states are "CT, FL, MA, NC, NJ, PA". 
 
 
 
