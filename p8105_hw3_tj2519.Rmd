@@ -144,9 +144,8 @@ problem2_clean %>%
        y = "Mean of data value")
 
 
-
 ```
-To make this plot, I move the legend to the right of the plot so it could be more clear.
+To make this plot, I move the legend to the right of the plot so it could be more clear. The plot indicates the mean data value change across time (from 2002 to 2010) in each state (with 'Excellent' health).
 
 
 ## part5: answer the third question
@@ -221,6 +220,10 @@ demo_acc_join %>%
   geom_density(alpha = .5) +
   facet_grid(. ~ education)
 ```
+The table indicates that the number of female and male who has a degree of 'Less than high school' is almost equal; among the people with a High school degree or equivalent, the number of female is less than the number of male; among the people with a more than high school degree, the number of female and male is almost equal.
+
+According to the box plot, the median age of female and male with a less than a high school degree is similar, and the age distributions for the two genders are similar; the median age of female with a 'High school equivalent' degree is older than male, and the age distributions for the two genders are similar, with males slightly younger than females; the median age of female with a 'More than high school' degree is similar, and the age distributions for the two genders are similar.
+
 
 
 
