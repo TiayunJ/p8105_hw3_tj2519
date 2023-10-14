@@ -83,6 +83,31 @@ problem1_df %>%
 
 
 
+# Problem 2
+## part1: load the library
+```{r}
+library(p8105.datasets)
+data("brfss_smart2010") 
+
+view(brfss_smart2010)
+```
+
+## part2: clean the data
+```{r}
+problem2_df = brfss_smart2010
+
+a = problem2_df %>% 
+  janitor::clean_names() %>% 
+  filter(topic == "Overall Health")
+
+
+
+b = a %>% 
+  distinct(response)
+
+b
+```
+
 
 
 
