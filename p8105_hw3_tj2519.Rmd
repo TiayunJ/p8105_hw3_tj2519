@@ -9,6 +9,7 @@ date: "2023-10-09"
 ```{r}
 library(tidyverse)
 library(ggridges)
+library(ggplot2)
 library(p8105.datasets)
 data("instacart")
 
@@ -138,11 +139,11 @@ problem2_clean %>%
   select(year, location_abbr, data_value_mean) %>% 
   ggplot(aes(x = year, y = data_value_mean, group = location_abbr, 
              color = location_abbr)) +
-  geom_point() + geom_line()
-
+  geom_point() + geom_line() +
+  theme_minimal()
 
 ```
-
+To make this plot, I 
 
 
 
