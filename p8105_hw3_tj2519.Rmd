@@ -155,11 +155,11 @@ problem2_clean %>%
   ggplot(aes(x = data_value, fill = response)) +
   geom_density(alpha = .5) + 
   facet_grid(. ~ year) +
-  labs(title = "Data distribution for the year 2006 and 2010 in New York",
+  labs(title = "Data value distribution for the year 2006 and 2010 in New York",
        x= "Data value distribution")
  
 ```
-
+I firstly filter the datset to include only the data in NY and only the observations from 2006 and 2010. Then, to show the distribution of each response type, I draw a density plot. Then, we split the plot according to the value of each year.
 
 
 
