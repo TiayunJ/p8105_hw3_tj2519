@@ -203,13 +203,23 @@ view(demo_acc_join)
 ```
 
 
-## part2: 
+## part2: make a table indicating the number of each sex in each education level and make a plot showing the distribution of each age
 ```{r}
 demo_acc_join %>% 
   group_by(education, sex) %>% 
   summarize(number_count = n()) %>% 
   pivot_wider(names_from = sex, values_from = number_count)
 
+demo_acc_join %>% 
+  group_by(education) %>% 
+  ggplot(aes(x = sex, y = age)) +
+  geom_boxplot() + 
+  facet_grid(. ~ education)
+
+demo_acc_join %>% 
+  ggplot(aes(x = age, fill = sex)) +
+  geom_density(alpha = .5) +
+  facet_grid(. ~ education)
 ```
 
 
