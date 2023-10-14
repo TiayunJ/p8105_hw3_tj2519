@@ -135,7 +135,7 @@ According to the results, in 2002, `r nrow(state_2002)` states were observed at 
 problem2_clean %>% 
   filter(response == "Excellent") %>% 
   group_by(location_abbr, year) %>% 
-  summarize(data_value_mean = mean(data_value)) %>%
+  summarize(data_value_mean = mean(data_value, na.rm = TRUE)) %>%
   ggplot(aes(x = year, y = data_value_mean, group = location_abbr, 
              color = location_abbr)) +
   geom_line() +
