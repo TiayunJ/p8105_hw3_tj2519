@@ -164,7 +164,7 @@ I firstly filter the datset to include only the data in NY and only the observat
 
 
 # Problem 3
-## part1: read the two datasets
+## part1: read the two datasets and tidy the two datasets, also apply left_join by "seqn" to merge the two datasets
 ```{r}
 demo_data = 
   read_csv("data/nhanes_covar.csv", skip = 4) %>% 
@@ -176,15 +176,15 @@ acc_data =
   read_csv("data/nhanes_accel.csv") %>% 
   janitor::clean_names()
 
+demo_acc_join = 
+  left_join(demo_data, acc_data, by = "seqn")
+  
+
+
 view(acc_data)
 view(demo_data)
+view(demo_acc_join)
 ```
-
-
-
-
-
-
 
 
 
