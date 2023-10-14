@@ -141,7 +141,7 @@ problem2_clean %>%
              color = location_abbr)) +
   geom_point() + geom_line() +
   theme_minimal() + 
-  labs(title = "The change in the mean of data_value for the 'Excelent' category",
+  labs(title = "The change in the mean of data_value for the 'Excellent' category",
        y = "Mean of data value")
 
 ```
@@ -160,6 +160,17 @@ problem2_clean %>%
  
 ```
 I firstly filter the datset to include only the data in NY and only the observations from 2006 and 2010. Then, to show the distribution of each response type, I draw a density plot. Then, we split the plot according to the value of each year.
+
+
+
+
+# Problem 3
+## part1: read the two datasets
+```{r}
+
+```
+
+
 
 
 
