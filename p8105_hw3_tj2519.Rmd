@@ -172,9 +172,9 @@ demo_data =
   filter(age >= 21) %>% 
   drop_na()
 
-
 acc_data =
-  read_csv("data/nhanes_accel.csv")
+  read_csv("data/nhanes_accel.csv") %>% 
+  janitor::clean_names()
 
 view(acc_data)
 view(demo_data)
