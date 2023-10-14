@@ -84,7 +84,7 @@ problem1_df %>%
 
 
 # Problem 2
-## part1: load the library
+## part1: load the library and dataset
 ```{r}
 library(p8105.datasets)
 data("brfss_smart2010") 
@@ -92,11 +92,11 @@ data("brfss_smart2010")
 view(brfss_smart2010)
 ```
 
-## part2: clean the data
+## part2: cleaning the data
 ```{r}
 problem2_df = brfss_smart2010
 
-problem2_df %>% 
+problem2_clean = problem2_df %>% 
   janitor::clean_names() %>% 
   rename(location_abbr = locationabbr, location_desc_order = locationdesc) %>% 
   filter(topic == "Overall Health") %>% 
@@ -104,11 +104,13 @@ problem2_df %>%
   mutate(response = forcats::fct_relevel(
     response, c("Poor", "Fair", "Good", "Very good", "Excellent"))) 
 
-
-
 ```
 
-
+## part3: answer the first question
+```{r}
+problem2_clean %>% 
+  
+```
 
 
 
