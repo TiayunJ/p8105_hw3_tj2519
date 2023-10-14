@@ -167,7 +167,12 @@ I firstly filter the datset to include only the data in NY and only the observat
 # Problem 3
 ## part1: read the two datasets
 ```{r}
+demo_data = 
+  read_csv("data/nhanes_covar.csv", skip = 4)
 
+acc_data =
+  read_csv("data/nhanes_accel.csv") %>% 
+  view()
 ```
 
 
