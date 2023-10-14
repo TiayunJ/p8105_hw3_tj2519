@@ -138,7 +138,7 @@ problem2_clean %>%
   summarize(data_value_mean = mean(data_value)) %>%
   ggplot(aes(x = year, y = data_value_mean, group = location_abbr, 
              color = location_abbr)) +
-  geom_point() + geom_line() +
+  geom_line() +
   theme_minimal() + 
   labs(title = "The change in the mean of data_value for the 'Excellent' category",
        y = "Mean of data value")
