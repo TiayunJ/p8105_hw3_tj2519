@@ -129,7 +129,16 @@ state_2007 = problem2_clean %>%
 According to the results, in 2002, `r nrow(state_2002)` states were observed at 7 or more locations (counties), and the 6 states are "`r state_2002$location_abbr`". In 2010, `r nrow(state_2007)` states were observed at 7 or more locations (counties), and the 14 states are "`r state_2007$location_abbr`". 
 
 
+## part4: answer the second question
+```{r}
+problem2_clean %>% 
+  filter(response == "Excellent") %>% 
+  group_by(location_abbr) %>% 
+  mutate(data_value_mean = mean(data_value, na.rm = TRUE)) %>% 
+  select(year, location_abbr, data_value_mean)
 
+
+```
 
 
 
