@@ -153,8 +153,9 @@ problem2_clean %>%
   ggplot(aes(x = data_value, fill = response)) +
   geom_density(alpha = .5) + 
   facet_grid(. ~ year) +
-  
-  
+  labs(title = "Data distribution for the year 2006 and 2010 in New York",
+       x= "Data value distribution")
+ 
 
 ```
 
