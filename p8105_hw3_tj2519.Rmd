@@ -143,6 +143,8 @@ problem2_clean %>%
   labs(title = "The change in the mean of data_value for the 'Excellent' category",
        y = "Mean of data value")
 
+
+
 ```
 To make this plot, I move the legend to the right of the plot so it could be more clear.
 
@@ -151,12 +153,20 @@ To make this plot, I move the legend to the right of the plot so it could be mor
 ```{r}
 problem2_clean %>% 
   filter(location_abbr == "NY", year == 2006 | year == 2010) %>% 
+  ggplot(aes(x = data_value, fill = response)) +
+  geom_density(alpha = .5) +
+  facet_grid(. ~ year) +
+  labs(title = "Data value distribution for the year 2006 and 2010 in New York (density plot)",
+       x = "Data value distribution")
+
+problem2_clean %>% 
+  filter(location_abbr == "NY", year == 2006 | year == 2010) %>% 
   group_by(year) %>% 
   ggplot(aes(x = response, y = data_value)) +
   geom_boxplot() +
   facet_grid(. ~ year) +
-  labs(title = "Data value distribution for the year 2006 and 2010 in New York",
-       x= "Data value distribution")
+  labs(title = "Data value distribution for the year 2006 and 2010 in New York (box plot)",
+       x = "Data value distribution")
 
 ```
 I firstly filter the datset to include only the data in NY and only the observations from 2006 and 2010. Then, to show the distribution of each response type, I draw a density plot. Then, we split the plot according to the value of each year.
