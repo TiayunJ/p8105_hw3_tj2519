@@ -202,7 +202,7 @@ view(demo_acc_join)
 ```
 
 
-## part2: make a table indicating the number of each sex in each education level and make a plot showing the distribution of each age
+## part2: make a table indicating the number of each sex in each education level and make a plot showing the distribution of age in the two genders in each education level
 ```{r}
 demo_acc_join %>% 
   group_by(education, sex) %>% 
@@ -210,10 +210,10 @@ demo_acc_join %>%
   pivot_wider(names_from = sex, values_from = number_count)
 
 demo_acc_join %>% 
-  group_by(education) %>% 
   ggplot(aes(x = sex, y = age)) +
   geom_boxplot() + 
-  facet_grid(. ~ education)
+  facet_grid(. ~ education) +
+  labs(title = "Age distribution of female and male in each education level")
 
 demo_acc_join %>% 
   ggplot(aes(x = age, fill = sex)) +
@@ -225,6 +225,13 @@ The table indicates that the number of female and male who has a degree of 'Less
 According to the box plot, the median age of female and male with a less than a high school degree is similar, and the age distributions for the two genders are similar; the median age of female with a 'High school equivalent' degree is older than male, and the age distributions for the two genders are similar, with males slightly younger than females; the median age of female with a 'More than high school' degree is similar, and the age distributions for the two genders are similar.
 
 
+## part3: 
+```{r}
+demo_acc_join %>% 
+  pivot_longer(starts_with("min"), 
+               names_to = "activity",
+               values_to = "mims")
+```
 
 
 
