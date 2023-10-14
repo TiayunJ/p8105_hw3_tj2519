@@ -134,9 +134,8 @@ According to the results, in 2002, `r nrow(state_2002)` states were observed at 
 ```{r}
 problem2_clean %>% 
   filter(response == "Excellent") %>% 
-  group_by(location_abbr) %>% 
-  mutate(data_value_mean = mean(data_value, na.rm = TRUE)) %>% 
-  select(year, location_abbr, data_value_mean) %>% 
+  group_by(location_abbr, year) %>% 
+  summarize(data_value_mean = mean(data_value)) %>%
   ggplot(aes(x = year, y = data_value_mean, group = location_abbr, 
              color = location_abbr)) +
   geom_point() + geom_line() +
@@ -157,7 +156,7 @@ problem2_clean %>%
   facet_grid(. ~ year) +
   labs(title = "Data value distribution for the year 2006 and 2010 in New York",
        x= "Data value distribution")
- 
+
 ```
 I firstly filter the datset to include only the data in NY and only the observations from 2006 and 2010. Then, to show the distribution of each response type, I draw a density plot. Then, we split the plot according to the value of each year.
 
@@ -168,11 +167,16 @@ I firstly filter the datset to include only the data in NY and only the observat
 ## part1: read the two datasets
 ```{r}
 demo_data = 
-  read_csv("data/nhanes_covar.csv", skip = 4)
+  read_csv("data/nhanes_covar.csv", skip = 4) %>% 
+  janitor::clean_names() %>% 
+  filter(age >= 21) %>% 
+  drop_na()
 
 acc_data =
-  read_csv("data/nhanes_accel.csv") %>% 
-  view()
+  read_csv("data/nhanes_accel.csv")
+
+view(acc_data)
+view(demo_data)
 ```
 
 
