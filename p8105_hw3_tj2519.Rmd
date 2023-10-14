@@ -135,7 +135,9 @@ problem2_clean %>%
   filter(response == "Excellent") %>% 
   group_by(location_abbr) %>% 
   mutate(data_value_mean = mean(data_value, na.rm = TRUE)) %>% 
-  select(year, location_abbr, data_value_mean)
+  select(year, location_abbr, data_value_mean) %>% 
+  ggplot(aes(x = year, y = data_value_mean)) +
+  geom_point() + geom_line()
 
 
 ```
