@@ -108,7 +108,7 @@ problem2_clean = problem2_df %>%
 
 ## part3: answer the first question
 ```{r}
-problem2_clean %>%
+state_2002 = problem2_clean %>%
   filter(year == 2002) %>% 
   group_by(location_abbr) %>% 
   summarize(n_location = n_distinct(location_desc_order)) %>% 
@@ -120,14 +120,20 @@ problem2_clean %>%
   summarize(n_location = n_distinct(geo_location)) %>% 
   filter(n_location >= 7)
 
-  
-problem2_clean %>%
+state_2007 = problem2_clean %>%
   filter(year == 2010) %>% 
   group_by(location_abbr) %>% 
   summarize(n_location = n_distinct(location_desc_order)) %>% 
   filter(n_location >= 7)
 ```
-According to the results, in 2002, there are 6 states were observed at 7 or more locations (counties), and the 6 states are "CT, FL, MA, NC, NJ, PA". 
+According to the results, in 2002, `r nrow(state_2002)` states were observed at 7 or more locations (counties), and the 6 states are "`r state_2002$location_abbr`". In 2010, `r nrow(state_2007)` states were observed at 7 or more locations (counties), and the 14 states are "`r state_2007$location_abbr`". 
+
+
+
+
+
+
+
 
 
 
