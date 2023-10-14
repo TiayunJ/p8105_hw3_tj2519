@@ -140,7 +140,9 @@ problem2_clean %>%
   ggplot(aes(x = year, y = data_value_mean, group = location_abbr, 
              color = location_abbr)) +
   geom_point() + geom_line() +
-  theme_minimal()
+  theme_minimal() + 
+  labs(title = "The change in the mean of data_value for the 'Excelent' category",
+       y = "Mean of data value")
 
 ```
 To make this plot, I move the legend to the right of the plot so it could be more clear.
@@ -156,7 +158,6 @@ problem2_clean %>%
   labs(title = "Data distribution for the year 2006 and 2010 in New York",
        x= "Data value distribution")
  
-
 ```
 
 
