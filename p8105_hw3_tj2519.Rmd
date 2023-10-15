@@ -240,11 +240,12 @@ demo_acc_join %>%
   labs(title = "Total activity across age in each education level")
   
 ```
+
 The plot shows the total activity across age in each education level, and the trend line in each education level seems to have a trend - with younger age, the total activity is higher. In high school equivalent and more than high school group, female seem to have higher total activity than male. 
 
 
 ## part4: make a plot showing the 24-hr activity for each education level and stratified by sex
-```{r}
+```{r message = FALSE}
 demo_acc_join %>% 
   pivot_longer(starts_with("min"), 
                names_to = "activity_time",
@@ -257,7 +258,7 @@ demo_acc_join %>%
   labs(title = "The activity across 24 hrs in each education level stratified by sex",
        x = "activity time (min)")
 ```
-The plot illustrates the activity across time in each observation (stratified by sex) in each education level.Within the 24-hr period, 
 
+The plot illustrates the activity across time in each observation (stratified by sex) in each education level.Within the 24-hr period, the activity seems to be the lowest at around the 250th min in each education group, and the highest activity seem to appear at around the 750th min in each education group. Female and male shows similar trend in each education level, with 'Less than high school' group showing higher activity around the 750th min.
 
 
