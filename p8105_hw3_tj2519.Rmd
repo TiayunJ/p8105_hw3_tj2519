@@ -253,8 +253,9 @@ demo_acc_join %>%
   mutate(activity_time = as.numeric(activity_time)) %>% 
   ggplot(aes(x = activity_time, y = activity_value, color = sex)) + 
   geom_smooth(aes(group = sex), se = FALSE) +
-  geom_point(alpha = .1) +
-  facet_grid(. ~ education)
+  facet_grid(. ~ education) +
+  labs(title = "The activity across 24 hrs in each education level stratified by sex",
+       x = "activity time (min)")
 ```
 The plot illustrates the activity across time in each observation (stratified by sex) in each education level.Within the 24-hr period, 
 
