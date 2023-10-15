@@ -105,6 +105,7 @@ problem2_clean = problem2_df %>%
   mutate(response = forcats::fct_relevel(
     response, c("Poor", "Fair", "Good", "Very good", "Excellent")))
 
+view(problem2_clean)
 ```
 
 ## part3: answer the first question
@@ -143,12 +144,11 @@ problem2_clean %>%
   labs(title = "The change in the mean of data_value for the 'Excellent' category",
        y = "Mean of data value")
 
-
 ```
-To make this plot, I move the legend to the right of the plot so it could be more clear. The plot indicates the mean data value change across time (from 2002 to 2010) in each state (with 'Excellent' health).
+To make this plot, I move the legend to the right of the plot so it could be more clear. The plot indicates the mean data value change across time (from 2002 to 2010) in each state (with 'Excellent' health). In this plot the mean of data value is calculated and from the plot, it could be observed that the mean fluctuate a lot across time and the trend is also very different among the states.
 
 
-## part5: answer the third question
+## part5: answer the third question, make the 2-panel plot showing the data value distribution of the year 2006 and 2010
 ```{r}
 problem2_clean %>% 
   filter(location_abbr == "NY", year == 2006 | year == 2010) %>% 
@@ -168,7 +168,7 @@ problem2_clean %>%
        x = "Data value distribution")
 
 ```
-I firstly filter the datset to include only the data in NY and only the observations from 2006 and 2010. Then, to show the distribution of each response type, I draw a density plot. Then, we split the plot according to the value of each year.
+I firstly filter the datset to include only the data in NY and only the observations from 2006 and 2010. Then, to show the distribution of each response type, I draw a density plot as well as a box plot. Then, we split the plot according to the value of each year. From both plots, we could tell that in both 2006 and 2010, the data value generally has an increasing trend from 'Poor' to 'Very Good'. However, as for the 'Excellent' group, the data_value decreases. It means that most people in NY self-reported as good health or above in both years.
 
 
 # Problem 3
