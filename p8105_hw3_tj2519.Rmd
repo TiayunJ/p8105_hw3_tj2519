@@ -247,14 +247,16 @@ The plot shows the total activity across age in each education level, and the tr
 ```{r}
 demo_acc_join %>% 
   pivot_longer(starts_with("min"), 
-               names_to = "activity",
-               values_to = "activity_value") %>% 
-  ggplot(aes(x = activity, y = activity_value, color = sex)) + 
-  geom_smooth(se = FALSE) +
+               names_to = "activity_time",
+               values_to = "activity_value") %>%
+  mutate(activity_time = substr(activity_time, start = 4, stop = 100)) %>% 
+  mutate(activity_time = as.numeric(activity_time)) %>% 
+  ggplot(aes(x = activity_time, y = activity_value, color = sex)) + 
+  geom_smooth(aes(group = sex), se = FALSE) +
   geom_point(alpha = .1) +
   facet_grid(. ~ education)
 ```
-
+The plot illustrates the activity across time in each observation (stratified by sex) in each education level.Within the 24-hr period, 
 
 
 
