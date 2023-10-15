@@ -108,7 +108,7 @@ problem2_clean = problem2_df %>%
 view(problem2_clean)
 ```
 
-## part3: answer the first question
+## part3: answer the first question - the number of locations
 ```{r}
 state_2002 = problem2_clean %>%
   filter(year == 2002) %>% 
@@ -131,7 +131,7 @@ state_2007 = problem2_clean %>%
 According to the results, in 2002, `r nrow(state_2002)` states were observed at 7 or more locations (counties), and the 6 states are "`r state_2002$location_abbr`". In 2010, `r nrow(state_2007)` states were observed at 7 or more locations (counties), and the 14 states are "`r state_2007$location_abbr`". 
 
 
-## part4: answer the second question
+## part4: answer the second question - the mean data_value for each state
 ```{r}
 problem2_clean %>% 
   filter(response == "Excellent") %>% 
@@ -145,7 +145,7 @@ problem2_clean %>%
        y = "Mean of data value")
 
 ```
-To make this plot, I move the legend to the right of the plot so it could be more clear. The plot indicates the mean data value change across time (from 2002 to 2010) in each state (with 'Excellent' health). In this plot the mean of data value is calculated and from the plot, it could be observed that the mean fluctuate a lot across time and the trend is also very different among the states.
+To make this plot, I move the legend to the right of the plot so it could be more clear. The plot indicates the mean data value (prevalence) change across time (from 2002 to 2010) in each state (with 'Excellent' health). In this plot the mean of data value is calculated and from the plot, it could be observed that the mean fluctuate a lot across time and the trend is also very different among the states.
 
 
 ## part5: answer the third question, make the 2-panel plot showing the data value distribution of the year 2006 and 2010
@@ -165,15 +165,30 @@ problem2_clean %>%
   geom_boxplot() +
   facet_grid(. ~ year) +
   labs(title = "Data value distribution for the year 2006 and 2010 in New York (box plot)",
-       x = "Data value distribution")
+       x = "Data value distribution",
+       y = "data value (%)")
 
 ```
-I firstly filter the datset to include only the data in NY and only the observations from 2006 and 2010. Then, to show the distribution of each response type, I draw a density plot as well as a box plot. Then, we split the plot according to the value of each year. From both plots, we could tell that in both 2006 and 2010, the data value generally has an increasing trend from 'Poor' to 'Very Good'. However, as for the 'Excellent' group, the data_value decreases. It means that most people in NY self-reported as good health or above in both years.
+
+```{r}
+median_2006 = problem2_clean %>% 
+  filter(location_abbr == "NY", year == 2006) %>% 
+  group_by(response) %>% 
+  summarize(median = median(data_value))
+  
+median_2010 = problem2_clean %>% 
+  filter(location_abbr == "NY", year == 2010) %>% 
+  group_by(response) %>% 
+  summarize(median = median(data_value))
+```
+
+I firstly filter the datset to include only the data in NY and only the observations from 2006 and 2010. Then, to show the distribution of each response type, I draw a density plot as well as a box plot. Then, we split the plot according to the value of each year. From both plots, we could tell that in both 2006 and 2010, the data value generally has an increasing trend from 'Poor' to 'Very Good'. However, as for the 'Excellent' group, the data_value decreases. It means that most people in NY self-reported as good health or above in both years. In 2006, the median values for each response type are (from 'Poor' to 'Excellent') `r median_2006$median`, In 2010, the median values for each response type are (from 'Poor' to 'Excellent') `r median_2010$median`.
+
 
 
 # Problem 3
 ## part1: read the two datasets and tidy the two datasets, also apply left_join by "seqn" to merge the two datasets. Also recode certain variables
-```{r}
+```{r message = FALSE}
 demo_data = 
   read_csv("data/nhanes_covar.csv", skip = 4) %>% 
   janitor::clean_names() %>% 
@@ -194,11 +209,6 @@ acc_data =
 
 demo_acc_join = 
   left_join(demo_data, acc_data, by = "seqn")
-
-
-view(acc_data)
-view(demo_data)
-view(demo_acc_join)
 ```
 
 
