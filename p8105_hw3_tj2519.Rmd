@@ -90,7 +90,6 @@ problem1_df %>%
 library(p8105.datasets)
 data("brfss_smart2010") 
 
-view(brfss_smart2010)
 ```
 
 ## part2: cleaning the data
@@ -105,7 +104,6 @@ problem2_clean = problem2_df %>%
   mutate(response = forcats::fct_relevel(
     response, c("Poor", "Fair", "Good", "Very good", "Excellent")))
 
-view(problem2_clean)
 ```
 
 ## part3: answer the first question - the number of locations
@@ -213,11 +211,12 @@ demo_acc_join =
 
 
 ## part2: make a table indicating the number of each sex in each education level and make a plot showing the distribution of age in the two genders in each education level
-```{r}
+```{r message = FALSE}
 demo_acc_join %>% 
   group_by(education, sex) %>% 
   summarize(number_count = n()) %>% 
-  pivot_wider(names_from = sex, values_from = number_count)
+  pivot_wider(names_from = sex, values_from = number_count) %>% 
+  knitr:: kable()
 
 demo_acc_join %>% 
   ggplot(aes(x = sex, y = age)) +
